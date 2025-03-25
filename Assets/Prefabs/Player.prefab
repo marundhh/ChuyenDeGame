@@ -4448,6 +4448,9 @@ MonoBehaviour:
   - {fileID: 2645572217306678302}
   - {fileID: 8594509945383280959}
   - {fileID: 6764035438412613998}
+  - {fileID: 3811351860147399164}
+  - {fileID: 3698179102757163641}
+  - {fileID: 3847905128245013418}
   - {fileID: 2251862922045274388}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &6764035438412613998
@@ -4502,6 +4505,7 @@ MonoBehaviour:
   aimMask:
     serializedVersion: 2
     m_Bits: 1
+  maxAimDistance: 100
 --- !u!114 &3698179102757163641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35066,7 +35070,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6162166871509232283}
-  - component: {fileID: 6166044082614201916}
   - component: {fileID: 8916055287246202069}
   m_Layer: 3
   m_Name: Sphere
@@ -35090,14 +35093,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3207981686542491855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6166044082614201916
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3260817961297084658}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8916055287246202069
 MeshRenderer:
   m_ObjectHideFlags: 0
