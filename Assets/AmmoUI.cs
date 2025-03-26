@@ -1,24 +1,33 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using Fusion;
 
 public class AmmoUI : MonoBehaviour
 {
-    public RaycastWeapon weapon; // Tham chiếu đến vũ khí
-    public Text ammoText; // Nếu dùng UI Text
-    public TextMeshProUGUI ammoTMP; // Nếu dùng TextMeshPro
+    private RaycastWeapon weapon;
+    public TextMeshProUGUI ammoTMP;
+
+    void Start()
+    {
+        FindWeapon();
+    }
 
     void Update()
     {
-        if (weapon != null)
+        if (weapon == null) FindWeapon();
+
+        if (weapon != null && ammoTMP != null)
         {
-            int ammoCount = weapon.GetAmmoCount(); // Lấy số lượng đạn hiện tại
+            ammoTMP.text = $"Đạn: {weapon.GetAmmoCount()}";
+        }
+    }
 
-            if (ammoText != null)
-                ammoText.text = "Đạn: " + ammoCount.ToString();
-
-            if (ammoTMP != null)
-                ammoTMP.text = "Đạn: " + ammoCount.ToString();
+    private void FindWeapon()
+    {
+        var player = FindObjectOfType<NetworkObject>();
+        if (player != null)
+        {
+            weapon = player.GetComponentInChildren<RaycastWeapon>();
         }
     }
 }

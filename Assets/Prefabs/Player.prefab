@@ -34839,6 +34839,8 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 55a52aa8800fe2243a0011c09ce1a11d, type: 3}
   reloadSound: {fileID: 8300000, guid: 54f4e74c50586384791274b4aaf4b262, type: 3}
   emptyMagSound: {fileID: 8300000, guid: 54f4e74c50586384791274b4aaf4b262, type: 3}
+  recoilAmount: 0.2
+  recoilSpeed: 0.2
 --- !u!82 &5731803652244603056
 AudioSource:
   m_ObjectHideFlags: 0
@@ -56753,8 +56755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107faae1d728507468175663b1cd212d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 3847905128245013418}
-  ammoText: {fileID: 0}
   ammoTMP: {fileID: 6213666750762312733}
 --- !u!1 &5841472692101653671
 GameObject:

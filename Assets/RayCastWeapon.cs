@@ -10,9 +10,9 @@ public class RaycastWeapon : NetworkBehaviour
     public TrailRenderer tracerEffect;
     public Transform raycastOrigin;
     public Transform raycastDestination;
-    public int magazineSize = 30; // Số đạn tối đa
-    public float reloadTime = 2f; // Thời gian chờ hồi đạn
-    public float fireRate = 0.2f; // Độ trễ giữa các phát bắn
+    public int magazineSize = 30;
+    public float reloadTime = 2f;
+    public float fireRate = 0.2f;
 
     private int currentAmmo;
     private float nextFireTime;
@@ -21,37 +21,94 @@ public class RaycastWeapon : NetworkBehaviour
     public AudioSource audioSource;
     public AudioClip fireSound;
     public AudioClip reloadSound;
-    public AudioClip emptyMagSound; // Âm thanh khi hết đạn
+    public AudioClip emptyMagSound;
+
+    // 🎯 Biến độ giật (Recoil)
+    private Transform cameraTransform;
+    public float recoilAmount = 2f;
+    public float recoilSpeed = 5f;
+    private Vector3 originalCameraRotation;
 
     Ray ray;
     RaycastHit hitInfo;
 
     public override void Spawned()
     {
-        if (!Object.HasInputAuthority) enabled = false;
-        currentAmmo = magazineSize; // Đạn đầy khi bắt đầu
+        if (!Object.HasInputAuthority)
+        {
+            enabled = false;
+            return;
+        }
+
+        currentAmmo = magazineSize;
+
+        // 🔍 **Tìm Camera Player (Chạy Coroutine để đảm bảo tìm thấy)**
+        StartCoroutine(FindPlayerCamera());
+    }
+
+    private IEnumerator FindPlayerCamera()
+    {
+        while (cameraTransform == null)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            Camera foundCamera = GetComponentInChildren<Camera>();
+            if (foundCamera == null)
+            {
+                foundCamera = Camera.main; // Nếu chưa tìm thấy, dùng Camera chính
+            }
+
+            if (foundCamera != null)
+            {
+                cameraTransform = foundCamera.transform;
+                originalCameraRotation = cameraTransform.localEulerAngles;
+            }
+        }
     }
 
     public void StartFiring()
     {
-        if (!Object.HasInputAuthority || isReloading) return;
-        if (Time.time < nextFireTime) return; // Giới hạn tốc độ bắn
+        if (!Object.HasInputAuthority || isReloading || Time.time < nextFireTime) return;
 
         if (currentAmmo > 0)
         {
             isFiring = true;
-            currentAmmo--; // Giảm đạn
+            currentAmmo--;
             nextFireTime = Time.time + fireRate;
 
             RPC_FireWeapon(raycastOrigin.position, raycastDestination.position);
+
+            // 🔊 Phát âm thanh bắn
+            if (audioSource && fireSound) audioSource.PlayOneShot(fireSound);
+
+            // 🔥 Thêm hiệu ứng giật (Recoil)
+            ApplyRecoil();
         }
         else
         {
-            if (!isReloading)
-            {
-                PlayEmptyMagSound(); // Chơi âm thanh hết đạn
-                StartCoroutine(ReloadAmmo()); // Hết đạn thì tự động nạp lại
-            }
+            // 🔊 Phát âm thanh hết đạn
+            if (audioSource && emptyMagSound) audioSource.PlayOneShot(emptyMagSound);
+
+            StartCoroutine(Reload());
+        }
+    }
+
+    private void ApplyRecoil()
+    {
+        if (cameraTransform != null)
+        {
+            Vector3 recoilRotation = new Vector3(-recoilAmount, Random.Range(-recoilAmount / 2, recoilAmount / 2), 0);
+            cameraTransform.localEulerAngles += recoilRotation;
+            StartCoroutine(ResetRecoil());
+        }
+    }
+
+    private IEnumerator ResetRecoil()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (cameraTransform != null)
+        {
+            cameraTransform.localEulerAngles = Vector3.Lerp(cameraTransform.localEulerAngles, originalCameraRotation, Time.deltaTime * recoilSpeed);
         }
     }
 
@@ -61,17 +118,25 @@ public class RaycastWeapon : NetworkBehaviour
         isFiring = false;
     }
 
+    private IEnumerator Reload()
+    {
+        if (isReloading) yield break;
+        isReloading = true;
+
+        // 🔊 Phát âm thanh nạp đạn
+        if (audioSource && reloadSound) audioSource.PlayOneShot(reloadSound);
+
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = magazineSize;
+        isReloading = false;
+    }
+
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
     private void RPC_FireWeapon(Vector3 origin, Vector3 destination)
     {
         foreach (var particle in muzzleFlash)
         {
             particle.Emit(1);
-        }
-
-        if (audioSource && fireSound)
-        {
-            audioSource.PlayOneShot(fireSound);
         }
 
         ray.origin = origin;
@@ -89,30 +154,9 @@ public class RaycastWeapon : NetworkBehaviour
         }
     }
 
-    private IEnumerator ReloadAmmo()
-    {
-        if (isReloading) yield break;
-
-        isReloading = true;
-        if (audioSource && reloadSound)
-        {
-            audioSource.PlayOneShot(reloadSound);
-        }
-        yield return new WaitForSeconds(reloadTime);
-        currentAmmo = magazineSize;
-        isReloading = false;
-    }
-
-    private void PlayEmptyMagSound()
-    {
-        if (audioSource && emptyMagSound)
-        {
-            audioSource.PlayOneShot(emptyMagSound);
-        }
-    }
-
+    // ✅ **Thêm phương thức GetAmmoCount() để AmmoUI lấy số đạn**
     public int GetAmmoCount()
     {
-        return currentAmmo;
+        return currentAmmo; // Trả về số đạn còn lại
     }
 }
