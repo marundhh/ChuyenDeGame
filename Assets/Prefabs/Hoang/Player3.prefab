@@ -25104,7 +25104,7 @@ Transform:
   m_GameObject: {fileID: 3382333926338682745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8807602, y: 0, z: -0.7082982}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25366,6 +25366,10 @@ MonoBehaviour:
   _mana: 100
   _score: 0
   _Fire: 1
+  fireballPrefab: {fileID: 8464514485136030335, guid: 4c9f6ec5574707143b53ad0c1f8197c2,
+    type: 3}
+  firePoint: {fileID: 0}
+  fireRate: 0.5
   _Slash: 1
   sliderHealth: {fileID: 8824178220582456917}
   sliderMana: {fileID: 290778650017820477}

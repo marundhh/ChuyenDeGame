@@ -4457,6 +4457,7 @@ MonoBehaviour:
   - {fileID: 1987591097774549049}
   - {fileID: 6699833635242281631}
   - {fileID: 177911805667152731}
+  - {fileID: 194963471150310880}
   - {fileID: 3847905128245013418}
   - {fileID: 2251862922045274388}
   ForceRemoteRenderTimeframe: 0
@@ -4544,6 +4545,9 @@ MonoBehaviour:
   _mana: 100
   _score: 0
   _Fire: 0
+  fireballPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
+  fireRate: 0.5
   _Slash: 1
   sliderHealth: {fileID: 232002070062755049}
   sliderMana: {fileID: 7348552978576783343}
@@ -35395,6 +35399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6162166871509232283}
   - component: {fileID: 8916055287246202069}
+  - component: {fileID: 194963471150310880}
   m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
@@ -35459,6 +35464,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &194963471150310880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3260817961297084658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17bfab519983764399544c6d3bc163c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 8464514485136030335, guid: 4c9f6ec5574707143b53ad0c1f8197c2,
+    type: 3}
+  sphereTransform: {fileID: 6162166871509232283}
 --- !u!1 &3260968124138278676
 GameObject:
   m_ObjectHideFlags: 0
