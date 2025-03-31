@@ -6,17 +6,37 @@ using System;
 using System.Collections;
 
 
-[System.Serializable]
-public struct PlayerInfo : INetworkStruct
-{
-    public int health;
-    public int mana;
-    public int score;
-}
 public class PlayerProperties : NetworkBehaviour
 {
     [Networked, OnChangedRender(nameof(OnInfoChanged))]
-    private PlayerInfo info { get; set; }
+    public int health { get; set; } = 100;
+    [Networked, OnChangedRender(nameof(OnInfoChanged))]
+    public int mana { get; set; } = 100;
+    [Networked, OnChangedRender(nameof(OnInfoChanged))]
+    public int score { get; set; } = 0;
+
+    [Networked, OnChangedRender(nameof(OnAnimationFireChanged))]
+    public bool Fire { get; set; } = false;
+    private void OnAnimationFireChanged()
+    {
+        anim.SetTrigger("Fire");
+    }
+
+
+    public GameObject weapon;
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RpcTakeDamage(int damage)
+    {
+        health -= damage;  // Giảm sức khỏe khi nhận sát thương
+        Debug.Log("Player received damage. Health: " + health);
+
+
+        if (health <= 0)
+        {
+            //Die();  // Player chết khi sức khỏe <= 0
+        }
+    }
 
 
     Animator anim;
@@ -36,39 +56,36 @@ public class PlayerProperties : NetworkBehaviour
 
     private void OnInfoChanged()
     {
-        sliderHealth.value = info.health;
-        sliderMana.value = info.mana;
-        scoreText.text = info.score + "";
-        Debug.Log("score: " + info.score);
+        sliderHealth.value = health;
+        sliderMana.value = mana;
+        scoreText.text = score + "";
     }
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        info = new PlayerInfo
-        {
-            health = (int)sliderHealth.value,
-            mana = (int)sliderMana.value,
-            score = 0
-        };
     }
-    //void Update()
-    public void Update()
+    public override void FixedUpdateNetwork()
     {
         if (HasInputAuthority)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                // health -= 10;
+                // mana -= 10;
+                // score += 10;
+                Slash = !Slash;
+                weapon.GetComponent<BoxCollider>().enabled = true;
+            }
+            else if (Input.GetMouseButtonUp(0)) 
+            {
+                weapon.GetComponent<BoxCollider>().enabled = false;
+            }
+
             if (Input.GetKeyDown(KeyCode.F))
             {
-                int currenthealth = info.health;
-                int currentmana = info.mana;
-                int currentscore = info.score;
-                info = new PlayerInfo
-                {
-                    health = currenthealth - 10,
-                    mana = currentmana - 20,
-                    score = currentscore + 30,
-                };
-                Slash = !Slash;
+                Fire = !Fire;
             }
+
         }
     }
 }

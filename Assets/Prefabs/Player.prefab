@@ -4540,6 +4540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2eda916afc7aa74a86fac0b9b627eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 100
+  _mana: 100
+  _score: 0
+  weapon: {fileID: 3222096565837992808}
   _Slash: 0
   sliderHealth: {fileID: 232002070062755049}
   sliderMana: {fileID: 7348552978576783343}
