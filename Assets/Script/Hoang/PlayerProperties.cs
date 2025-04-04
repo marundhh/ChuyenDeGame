@@ -15,34 +15,8 @@ public class PlayerProperties : NetworkBehaviour
     [Networked, OnChangedRender(nameof(OnInfoChanged))]
     public int score { get; set; } = 0;
 
-    [Networked, OnChangedRender(nameof(OnAnimationFireChanged))]
-    public bool Fire { get; set; } = false;
-    private void OnAnimationFireChanged()
-    {
-        anim.SetTrigger("Fire");
-    }
-
-
-    public GameObject fireballPrefab;
-    public Transform firePoint;
-    public float fireRate = 0.5f;
+    
   
-    //fireball bay ra
-    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
-    private void RPC_Fireball()
-    {
-        Transform lefthand = gameObject.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.LeftHand);
-        NetworkObject fireball = Runner.Spawn(fireballPrefab, lefthand.position, Quaternion.LookRotation(lefthand.forward), Object.InputAuthority);
-    }
-    public void OnAnimationFireballEvent()
-    {
-        if (Object.HasStateAuthority) // Chỉ host mới được gửi RPC
-        {
-            RPC_Fireball();
-        }
-    }
-
-
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RpcTakeDamage(int damage)
     {
@@ -94,10 +68,7 @@ public class PlayerProperties : NetworkBehaviour
                 Slash = !Slash;
                 
             }
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Fire = !Fire;
-            }
+            
 
         }
     }
