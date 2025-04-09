@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Thaithuan/Test.unity
+    guid: dc41c5e30689098448c810d5942ae5b3
+  - enabled: 1
     path: Assets/Scenes/Chung/Start.unity
     guid: 2ea9d50acdea7874bb8f2aa0be142a26
   - enabled: 1
