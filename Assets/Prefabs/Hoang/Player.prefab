@@ -4514,7 +4514,7 @@ MonoBehaviour:
   aimSmoothSpeed: 10000
   aimMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   maxAimDistance: 100
 --- !u!114 &3698179102757163641
 MonoBehaviour:
@@ -56832,7 +56832,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7995365858000137681
 MonoBehaviour:
   m_ObjectHideFlags: 0

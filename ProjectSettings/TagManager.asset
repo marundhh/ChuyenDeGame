@@ -7,6 +7,7 @@ TagManager:
   - FacingCamera
   - sword
   - PlayerCamera
+  - Enemy
   - enemy
   layers:
   - Default
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - Ground
   - Enemy
-  - 
+  - dan
   - 
   - 
   - 

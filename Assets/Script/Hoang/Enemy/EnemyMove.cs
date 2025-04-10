@@ -23,16 +23,30 @@ public class EnemyMove : MonoBehaviour
 
     private WaitForSeconds lookTime = new WaitForSeconds(2);
 
+    private PlayerProperties enemyProperties;
+    private bool isDeadHandled = false;
+
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        enemyProperties = GetComponent<PlayerProperties>();
 
         nav.avoidancePriority = Random.Range(5, 75);
     }
 
     void Update()
     {
+        // Nếu enemy đã chết thì bỏ qua toàn bộ xử lý còn lại
+        if (enemyProperties != null && enemyProperties.health <= 0)
+        {
+            if (!isDeadHandled)
+            {
+                HandleDeath();
+            }
+            return;
+        }
+
         // Tìm danh sách tất cả Player (nếu chưa có hoặc số lượng thay đổi)
         players = GameObject.FindGameObjectsWithTag("Player");
 
@@ -78,7 +92,6 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    // Tìm player gần nhất
     GameObject GetClosestPlayer()
     {
         GameObject closest = null;
@@ -104,5 +117,21 @@ public class EnemyMove : MonoBehaviour
         {
             transform.LookAt(targetPlayer.transform);
         }
+    }
+
+    void HandleDeath()
+    {
+        isDeadHandled = true;
+        nav.isStopped = true;
+        anim.SetBool("running", false);
+        anim.SetTrigger("Die");
+
+        StartCoroutine(DestroyAfterDelay(10f));
+    }
+
+    IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 }
