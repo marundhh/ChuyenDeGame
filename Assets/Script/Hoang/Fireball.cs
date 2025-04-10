@@ -4,7 +4,7 @@ using Fusion;
 
 public class Fireball : NetworkBehaviour
 {
-    public float speed = 10f;
+ 
     public float lifetime = 5f;
     public int damage = 20;
 
@@ -18,13 +18,6 @@ public class Fireball : NetworkBehaviour
     }
 
 
-    public override void FixedUpdateNetwork()
-    {
-        if (Object.HasStateAuthority)
-        {
-            transform.position += transform.forward * speed * Runner.DeltaTime;
-        }
-    }
 
 
     private void OnTriggerEnter(Collider other)
