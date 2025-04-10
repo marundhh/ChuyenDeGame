@@ -32193,6 +32193,7 @@ GameObject:
   - component: {fileID: 4812990446323265286}
   - component: {fileID: -3721936783482864520}
   - component: {fileID: 2585255527603376399}
+  - component: {fileID: 6452862023568074067}
   m_Layer: 0
   m_Name: Player5
   m_TagString: PlayerCamera
@@ -32384,6 +32385,7 @@ MonoBehaviour:
   - {fileID: 4812990446323265286}
   - {fileID: -3721936783482864520}
   - {fileID: 2585255527603376399}
+  - {fileID: 6452862023568074067}
   - {fileID: 2016360694612170081}
   - {fileID: 3419374587762702484}
   ForceRemoteRenderTimeframe: 0
@@ -32465,10 +32467,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2eda916afc7aa74a86fac0b9b627eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 100
+  _mana: 100
+  _score: 0
   _Slash: 0
   sliderHealth: {fileID: 461907675989180763}
   sliderMana: {fileID: 2223932529904280457}
   scoreText: {fileID: 8939335604385789876}
+--- !u!114 &6452862023568074067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290139552910108716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb182bda584015f429ac0e11b0d136bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4298267494962162109
 GameObject:
   m_ObjectHideFlags: 0
