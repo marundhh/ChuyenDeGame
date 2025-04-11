@@ -2457,6 +2457,72 @@ SkinnedMeshRenderer:
     m_Center: {x: -31.037167, y: 2.2770748, z: 0.11306858}
     m_Extent: {x: 36.97797, y: 27.562288, z: 31.487392}
   m_DirtyAABB: 0
+--- !u!1 &328529367927252254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8157476617947996414}
+  - component: {fileID: 8212111775522061715}
+  - component: {fileID: 195025567802926571}
+  m_Layer: 7
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8157476617947996414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328529367927252254}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5978641483928142704}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8212111775522061715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328529367927252254}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 22.7, y: 33.1, z: 31.4}
+  m_Center: {x: 6.52, y: 0.69, z: -0.0000011200716}
+--- !u!114 &195025567802926571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328529367927252254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f07867a87b6b6e4bbcc54151c23d94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &331418669858522212
 GameObject:
   m_ObjectHideFlags: 0
@@ -16707,6 +16773,8 @@ GameObject:
   - component: {fileID: 1321342329994673432}
   - component: {fileID: 2463643912188646073}
   - component: {fileID: 5512015395016887236}
+  - component: {fileID: 2994117231392752472}
+  - component: {fileID: 3640412535648708799}
   m_Layer: 7
   m_Name: Chr_FantasyHero_Preset_52
   m_TagString: Enemy
@@ -16823,10 +16891,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.29707187
+  m_Radius: 0.34299856
   m_Height: 1.9048448
   m_Direction: 1
-  m_Center: {x: -0.009252369, y: 1.0689187, z: 0}
+  m_Center: {x: 0.03667432, y: 1.0689187, z: 0}
 --- !u!114 &3045787477957679728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16906,6 +16974,36 @@ MonoBehaviour:
   _isDead: 0
   sliderHealth: {fileID: 269975026014990951}
   scoreText: {fileID: 2979487612310527772}
+--- !u!114 &2994117231392752472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124255071819304958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9bfaf2f2013b047a78c5657fadfeab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 328529367927252254}
+--- !u!114 &3640412535648708799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124255071819304958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd55dafa0350e9640b66a0094fd9a79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.2
+  walkCounter: 1
+  waitCounter: 10
+  isWalking: 0
+  detectRange: 5
 --- !u!1 &2129733224371244319
 GameObject:
   m_ObjectHideFlags: 0
@@ -69321,6 +69419,7 @@ Transform:
   - {fileID: 2502623321929016706}
   - {fileID: 2644093783500196206}
   - {fileID: 2457895149285496745}
+  - {fileID: 8157476617947996414}
   m_Father: {fileID: 6338228215027416058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9106417620824208493
