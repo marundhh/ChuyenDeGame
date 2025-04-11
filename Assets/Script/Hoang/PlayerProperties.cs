@@ -3,73 +3,78 @@ using Fusion;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using System.Collections;
-
 
 public class PlayerProperties : NetworkBehaviour
 {
     [Networked, OnChangedRender(nameof(OnInfoChanged))]
     public int health { get; set; } = 100;
-    [Networked, OnChangedRender(nameof(OnInfoChanged))]
-    public int mana { get; set; } = 100;
+
     [Networked, OnChangedRender(nameof(OnInfoChanged))]
     public int score { get; set; } = 0;
 
-    
-  
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RpcTakeDamage(int damage)
-    {
-        health -= damage;  // Giảm sức khỏe khi nhận sát thương
-        Debug.Log("Player received damage. Health: " + health);
-
-
-        if (health <= 0)
-        {
-            //Die();  // Player chết khi sức khỏe <= 0
-        }
-    }
-
-
-    Animator anim;
     [Networked, OnChangedRender(nameof(OnAnimationChanged))]
     public bool Slash { get; set; } = false;
 
+    [Networked, OnChangedRender(nameof(OnHitChanged))]
+    public bool isHit { get; set; } = false;
+
+    [Networked, OnChangedRender(nameof(OnDieChanged))]
+    public bool isDead { get; set; } = false;
+
+    Animator anim;
+    public Slider sliderHealth;
+    public TextMeshProUGUI scoreText;
+
+    public override void Spawned()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RpcTakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log("Player received damage. Health: " + health);
+
+        isHit = true; // Trigger Hit animation
+
+        if (health <= 0 && !isDead)
+        {
+            isDead = true; // Trigger Die animation
+        }
+    }
+
+    private void OnInfoChanged()
+    {
+        if (sliderHealth != null)
+            sliderHealth.value = health;
+        if (scoreText != null)
+            scoreText.text = score.ToString();
+    }
 
     private void OnAnimationChanged()
     {
         anim.SetTrigger("Slash");
     }
 
-    public Slider sliderHealth;
-    public Slider sliderMana;
-    public TextMeshProUGUI scoreText;
-
-
-    private void OnInfoChanged()
+    private void OnHitChanged()
     {
-        sliderHealth.value = health;
-        sliderMana.value = mana;
-        scoreText.text = score + "";
+        anim.SetTrigger("Hit");
     }
-    void Start()
+
+    private void OnDieChanged()
     {
-        anim = gameObject.GetComponent<Animator>();
+        anim.SetTrigger("Die");
     }
+
     public override void FixedUpdateNetwork()
     {
         if (HasInputAuthority)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                // health -= 10;
-                // mana -= 10;
-                // score += 10;
                 Slash = !Slash;
-                
             }
-            
-
         }
     }
 }

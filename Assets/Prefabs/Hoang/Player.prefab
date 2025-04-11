@@ -4513,7 +4513,7 @@ MonoBehaviour:
   aimSmoothSpeed: 10000
   aimMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   maxAimDistance: 100
 --- !u!114 &3698179102757163641
 MonoBehaviour:
@@ -4543,11 +4543,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _mana: 100
   _score: 0
   _Slash: 0
+  _isHit: 0
+  _isDead: 0
   sliderHealth: {fileID: 232002070062755049}
-  sliderMana: {fileID: 7348552978576783343}
   scoreText: {fileID: 553399374471932514}
 --- !u!114 &7390996224579396839
 MonoBehaviour:
@@ -56729,7 +56729,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7995365858000137681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81810,7 +81810,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7476057762072947429
 MonoBehaviour:
   m_ObjectHideFlags: 0
