@@ -6,7 +6,7 @@ public class WeaponManager : NetworkBehaviour
     {
         Debug.Log("vao OntriggerEnter");
         // Kiểm tra xem đối tượng va chạm có phải là player không
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Enemy"))
         {
             PlayerProperties opponentCombat = other.GetComponent<PlayerProperties>();
             if (opponentCombat != null)

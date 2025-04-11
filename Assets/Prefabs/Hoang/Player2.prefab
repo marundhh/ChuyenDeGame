@@ -55683,6 +55683,7 @@ GameObject:
   - component: {fileID: 3784389727971804962}
   - component: {fileID: 7196693448615448855}
   - component: {fileID: 2970863522210344062}
+  - component: {fileID: 1834312258581650869}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -55873,6 +55874,7 @@ MonoBehaviour:
   - {fileID: 3784389727971804962}
   - {fileID: 7196693448615448855}
   - {fileID: 2970863522210344062}
+  - {fileID: 1834312258581650869}
   - {fileID: 3855767682238052290}
   - {fileID: 5405130806372519695}
   ForceRemoteRenderTimeframe: 0
@@ -55931,10 +55933,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2eda916afc7aa74a86fac0b9b627eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 100
+  _mana: 100
+  _score: 0
   _Slash: 0
   sliderHealth: {fileID: 3785105975696742015}
   sliderMana: {fileID: 8943006224164318046}
   scoreText: {fileID: 1518453071579053484}
+--- !u!114 &1834312258581650869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367247416838792595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb182bda584015f429ac0e11b0d136bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7375114304592841759
 GameObject:
   m_ObjectHideFlags: 0

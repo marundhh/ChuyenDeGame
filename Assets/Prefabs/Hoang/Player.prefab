@@ -4200,6 +4200,7 @@ GameObject:
   - component: {fileID: 3811351860147399164}
   - component: {fileID: 3698179102757163641}
   - component: {fileID: 1987591097774549049}
+  - component: {fileID: 7390996224579396839}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -4455,6 +4456,7 @@ MonoBehaviour:
   - {fileID: 3811351860147399164}
   - {fileID: 3698179102757163641}
   - {fileID: 1987591097774549049}
+  - {fileID: 7390996224579396839}
   - {fileID: 6699833635242281631}
   - {fileID: 177911805667152731}
   - {fileID: 3847905128245013418}
@@ -4511,7 +4513,7 @@ MonoBehaviour:
   aimSmoothSpeed: 10000
   aimMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   maxAimDistance: 100
 --- !u!114 &3698179102757163641
 MonoBehaviour:
@@ -4541,12 +4543,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _mana: 100
   _score: 0
   _Slash: 0
+  _isHit: 0
+  _isDead: 0
   sliderHealth: {fileID: 232002070062755049}
-  sliderMana: {fileID: 7348552978576783343}
   scoreText: {fileID: 553399374471932514}
+--- !u!114 &7390996224579396839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575257098516078901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb182bda584015f429ac0e11b0d136bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &576122981292962906
 GameObject:
   m_ObjectHideFlags: 0
@@ -56715,7 +56729,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7995365858000137681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81796,7 +81810,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7476057762072947429
 MonoBehaviour:
   m_ObjectHideFlags: 0
