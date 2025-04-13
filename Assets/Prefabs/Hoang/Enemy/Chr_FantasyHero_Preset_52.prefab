@@ -16999,7 +16999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd55dafa0350e9640b66a0094fd9a79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.2
+  moveSpeed: 0.7
   walkCounter: 1
   waitCounter: 10
   isWalking: 0
