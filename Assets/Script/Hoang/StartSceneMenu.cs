@@ -23,7 +23,7 @@ public class StartSceneMenu : MonoBehaviour
     public void SaveNickName()
     {
         GameManagephoton.instance.ShowName = inp.text;
-        SceneManager.LoadSceneAsync("MultiplayerGame");
+        SceneManager.LoadSceneAsync("hii");
     }
     public void ChooseCharacter(GameObject character)
     {
