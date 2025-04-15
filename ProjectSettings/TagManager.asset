@@ -8,6 +8,7 @@ TagManager:
   - sword
   - PlayerCamera
   - Enemy
+  - Collectible
   layers:
   - Default
   - TransparentFX
