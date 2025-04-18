@@ -15,7 +15,7 @@ public class PlayFabLogin : MonoBehaviour
         };
 
 
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+      
     }
 
 
@@ -27,10 +27,7 @@ public class PlayFabLogin : MonoBehaviour
     }
 
 
-    void OnLoginFailure(PlayFabError error)
-    {
-        Debug.LogError("Đăng nhập thất bại: " + error.GenerateErrorReport());
-    }
+   
 
     public void SavePlayerData()
     {
