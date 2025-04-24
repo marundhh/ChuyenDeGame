@@ -25284,7 +25284,6 @@ MonoBehaviour:
   - {fileID: -1152573664795534328}
   - {fileID: 5809276285936763158}
   - {fileID: 3330190238579712345}
-  - {fileID: 658423975155797701}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &4659844522484051388
 MonoBehaviour:
@@ -70408,53 +70407,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -82.926
       objectReference: {fileID: 0}
-    - target: {fileID: 4717286125133672663, guid: 0c14f3ea30af4174ba288b3c2042f665,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.92453074
-      objectReference: {fileID: 0}
-    - target: {fileID: 4717286125133672663, guid: 0c14f3ea30af4174ba288b3c2042f665,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4717286125133672663, guid: 0c14f3ea30af4174ba288b3c2042f665,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.000017078306
-      objectReference: {fileID: 0}
-    - target: {fileID: 4717286125133672663, guid: 0c14f3ea30af4174ba288b3c2042f665,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.57988465
-      objectReference: {fileID: 0}
-    - target: {fileID: 4717286125133672663, guid: 0c14f3ea30af4174ba288b3c2042f665,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -0.00004445492
-      objectReference: {fileID: 0}
-    - target: {fileID: 4717286125133672663, guid: 0c14f3ea30af4174ba288b3c2042f665,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c14f3ea30af4174ba288b3c2042f665, type: 3}
---- !u!114 &658423975155797701 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5421212894497303947, guid: 0c14f3ea30af4174ba288b3c2042f665,
-    type: 3}
-  m_PrefabInstance: {fileID: 4764585730804835150}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4763399426420218720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729912eca7d225840a31f9bf149fb9a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &4760025271738426678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4561571508225656, guid: 0c14f3ea30af4174ba288b3c2042f665,
