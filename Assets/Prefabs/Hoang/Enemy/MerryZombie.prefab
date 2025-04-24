@@ -1635,6 +1635,7 @@ GameObject:
   - component: {fileID: 8892552889374147298}
   - component: {fileID: 2095654419169864790}
   - component: {fileID: 8377629791549710224}
+  - component: {fileID: 6902779753853930258}
   m_Layer: 7
   m_Name: MerryZombie
   m_TagString: Enemy
@@ -1693,7 +1694,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 3.5
+  m_Speed: 1.5
   m_Acceleration: 7.33
   avoidancePriority: 50
   m_AngularSpeed: 100000
@@ -1797,6 +1798,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 8611354288583460352}
   - {fileID: 8892552889374147298}
+  - {fileID: 6902779753853930258}
   - {fileID: 5645267840706881527}
   - {fileID: 3178464829536149769}
   ForceRemoteRenderTimeframe: 0
@@ -1864,6 +1866,22 @@ MonoBehaviour:
   waitCounter: 10
   isWalking: 0
   detectRange: 5
+--- !u!114 &6902779753853930258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550213090052384435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ea3f3ef59e8c4459a8402f023c41bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerProps: {fileID: 8892552889374147298}
+  spawnObjectPrefab: {fileID: 5334452347617832160, guid: e38f5bd5e39b74e448f0053d42a7efcc,
+    type: 3}
+  delayAfterDeath: 3
 --- !u!1 &5881141651416253876
 GameObject:
   m_ObjectHideFlags: 0
