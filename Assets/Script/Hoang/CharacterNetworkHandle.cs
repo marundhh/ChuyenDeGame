@@ -27,12 +27,9 @@ public class CharacterNetworkHandler : NetworkBehaviour
     {
         if (Object.HasInputAuthority)
         {
-            // Lấy input từ player local
             var moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            var jumpInput = Input.GetButton("Jump");
+            var jumpInput = Input.GetButtonDown("Jump"); // chỉ nhận 1 lần khi nhấn
 
-
-            // Gửi input lên mạng
             RPC_SetInput(moveInput, jumpInput);
         }
     }

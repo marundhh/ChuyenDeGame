@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33122181552623900}
   - component: {fileID: 23019494539852092}
   - component: {fileID: 4717286125133672663}
-  - component: {fileID: 5421212894497303947}
+  - component: {fileID: 7853055459320206716}
   m_Layer: 0
   m_Name: SM_Wep_Sword_01
   m_TagString: Untagged
@@ -100,13 +100,13 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.0639649, y: 1.2425418, z: 0.22265638}
-  m_Center: {x: 0.000016903594, y: 0.42087957, z: -0.00004442901}
---- !u!114 &5421212894497303947
+  m_Size: {x: 0.0639649, y: 0.92453074, z: 0.22265638}
+  m_Center: {x: 0.000017078306, y: 0.57988465, z: -0.00004445492}
+--- !u!114 &7853055459320206716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1631607032641582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729912eca7d225840a31f9bf149fb9a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fc9338708557c84da54b4b43b5941f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

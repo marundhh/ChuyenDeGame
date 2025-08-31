@@ -21,6 +21,8 @@ public class PlayerProperties : NetworkBehaviour
     [Networked, OnChangedRender(nameof(OnDieChanged))]
     public bool isDead { get; set; } = false;
 
+
+
     Animator anim;
     public Slider sliderHealth;
     public TextMeshProUGUI scoreText;
@@ -65,6 +67,9 @@ public class PlayerProperties : NetworkBehaviour
     private void OnDieChanged()
     {
         anim.SetTrigger("Die");
+
+        
+        
     }
 
     public override void FixedUpdateNetwork()
